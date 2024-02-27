@@ -33,8 +33,8 @@ import '@babylonjs/core/Materials/Node/Blocks'
 import losAngeles from "./assets/forFacebook-8K-LA.jpg";
 import athens from "./assets/Athens-8K.jpg";
 import lakeTahao from "./assets/LakeTahao-10K.jpg";
-import lakeTahao8k360video from "./assets/LakeTahao-8K-short-360.mp4";
-
+//import lakeTahao8k360video from "./assets/LakeTahao-8K-short-360.mp4";
+import Rover4k360video from "./assets/Rover_Ride_Along4k30H264.mp4"
 
 const canvas = document.getElementById("renderCanvas");
 const engine = new Engine(canvas, true);
@@ -249,18 +249,20 @@ const loadNewVideoTexture = (video) => {
     // Create the VideoDome
     dome = new VideoDome(
       "videoSphere",
-      lakeTahao8k360video,
+      Rover4k360video,
       {
         resolution: 64,
         size: 1000,
         clickToPlay: true,
+        loop: true,
+        autoPlay: true,
         useDirectMapping: false
       },
       scene
     );
     
     dome.mesh.material.alpha = 0;
-    dome.imageMode = PhotoDome.MODE_TOPBOTTOM;
+    dome.imageMode = PhotoDome.MODE_MONOSCOPIC;
     scene.beginDirectAnimation(
       dome.mesh,
       [fadeInAnimation],
