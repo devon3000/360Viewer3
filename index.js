@@ -142,7 +142,7 @@ stackPanel.addControl(button2);
 
 const button3 = Button.CreateSimpleButton(
   "button3",
-  "Lake Tahoe"
+  "360 Video w. DM"
 );
 button3.width = "200px";
 button3.height = "100px";
@@ -161,13 +161,13 @@ button3.onPointerUpObservable.add(() => {
   button2.thickness = 0;
   button3.thickness = 2;
   button4.thickness = 0;
-  transition(lakeTahao);
+  transitionVideoDM(lakeTahao);
 });
 stackPanel.addControl(button3);
 
 const button4 = Button.CreateSimpleButton(
   "button4",
-  "360 Video"
+  "360 Video w/o DM"
 );
 button4.width = "200px";
 button4.height = "100px";
@@ -186,7 +186,7 @@ button4.onPointerUpObservable.add(() => {
   button2.thickness = 0;
   button3.thickness = 0;
   button4.thickness = 2
-  transitionVideo(lakeTahao);
+  transitionVideoNoDM(lakeTahao);
 });
 stackPanel.addControl(button4);
 
@@ -201,7 +201,7 @@ const transition = (image) => {
   anim.onAnimationEnd = () => loadNewTexture(image);
 };
 
-const transitionVideo = (video) => {
+const transitionVideoNoDM = (video) => {
   let anim = scene.beginDirectAnimation(
     dome.mesh,
     [fadeOutAnimation],
@@ -209,8 +209,20 @@ const transitionVideo = (video) => {
     120,
     false
   );
-  anim.onAnimationEnd = () => loadNewVideoTexture(video);
+  anim.onAnimationEnd = () => loadNewVideoTexture(video,false);
 };
+
+const transitionVideoDM = (video) => {
+  let anim = scene.beginDirectAnimation(
+    dome.mesh,
+    [fadeOutAnimation],
+    0,
+    120,
+    false
+  );
+  anim.onAnimationEnd = () => loadNewVideoTexture(video,true);
+};
+
 
 const loadNewTexture = (image) => {
   const newTexture = new Texture(image, scene);
@@ -241,7 +253,7 @@ const loadNewTexture = (image) => {
   });
 };
 
-const loadNewVideoTexture = (video) => {
+const loadNewVideoTexture = (video, useDM) => {
   const newTexture = new Texture(video, scene);
   newTexture.onLoadObservable.add(() => {
     dome.dispose();
@@ -256,7 +268,7 @@ const loadNewVideoTexture = (video) => {
         clickToPlay: true,
         loop: true,
         autoPlay: true,
-        useDirectMapping: false
+        useDirectMapping: useDM
       },
       scene
     );
