@@ -34,7 +34,7 @@ import losAngeles from "./assets/forFacebook-8K-LA.jpg";
 import athens from "./assets/Athens-8K.jpg";
 import lakeTahao from "./assets/LakeTahao-10K.jpg";
 //import lakeTahao8k360video from "./assets/LakeTahao-8K-short-360.mp4";
-import rover4k360video from "./assets/Rover_Ride_Along4k30H264.mp4"
+import rover4k360video from "./assets/Rover_Edit4k30H264.mp4"
 
 const canvas = document.getElementById("renderCanvas");
 const engine = new Engine(canvas, true);
