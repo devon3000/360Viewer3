@@ -83,7 +83,7 @@ var dome = new PhotoDome(
 );
 dome.imageMode = PhotoDome.MODE_MONOSCOPIC;
 
-vrHelper.enableInteractions();
+//vrHelper.enableInteractions();
 
 // Create a GUI texture
 const advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI(
