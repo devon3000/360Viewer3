@@ -40,9 +40,19 @@ const canvas = document.getElementById("renderCanvas");
 const engine = new Engine(canvas, true);
 
 const scene = new Scene(engine);
-//var xrHelper = scene.createDefaultXRExperienceAsync();
+
+// added to handle browsers that don't like autoplay (like Safari?)
+/*scene.onPointerDown = function () {
+  videoDome.videoTexture.video.play();
+  scene.onPointerDown = null;
+};*/
+
+// Vision Pro only likes XR Experience, not VR?
+var xrHelper = scene.createDefaultXRExperienceAsync();
 //var vrHelper = scene.createDefaultVRExperience();
-var vrHelper = scene.createDefaultVRExperience({createDeviceOrientationCamera:false}); 
+//var vrHelper = scene.createDefaultVRExperience({createDeviceOrientationCamera:false}); 
+
+
 
 const camera = new UniversalCamera(
   "camera",
